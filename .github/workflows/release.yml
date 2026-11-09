@@ -43,8 +43,6 @@ jobs:
 
       - name: Publish to VS Code Marketplace (Trusted Publishing)
         run: npx @vscode/vsce publish --packagePath *.vsix
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
       - name: Publish to Open VSX Registry (Optional)
         if: env.OVSX_PAT != ''
