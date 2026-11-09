@@ -1,0 +1,115 @@
+{
+  "name": "zip-this-folder",
+  "displayName": "Zip This Folder",
+  "description": "Right-click any folder in the Explorer sidebar to compress it into a zip file.",
+  "version": "0.1.0",
+  "publisher": "markmclaren",
+  "icon": "icon.png",
+  "pricing": "Free",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markmclaren/zip-this-folder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markmclaren/zip-this-folder/issues"
+  },
+  "homepage": "https://github.com/markmclaren/zip-this-folder#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Utilities"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "zip",
+    "archive",
+    "compress",
+    "compression",
+    "folder",
+    "explorer",
+    "zipignore",
+    "context-menu"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:zip-this-folder.zipFolder"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "zip-this-folder.zipFolder",
+        "title": "Zip this folder",
+        "category": "Zip",
+        "icon": "$(file-zip)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "zip-this-folder.zipFolder",
+          "when": "explorerResourceIsFolder || explorerResourceIsRoot || !resource && workspaceFolderCount > 0",
+          "group": "7_modification@10"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "zip-this-folder.zipFolder",
+          "when": "view == workbench.explorer.fileView && workspaceFolderCount > 0",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Zip This Folder",
+      "properties": {
+        "zipThisFolder.useDefaultExcludes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Exclude common build and dependency folders by default (node_modules, .git, .DS_Store, Thumbs.db, *.zip)."
+        },
+        "zipThisFolder.useGitignore": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically respect patterns from .gitignore if present in the folder or workspace."
+        },
+        "zipThisFolder.useZipignore": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically respect patterns from .zipignore if present in the folder or workspace."
+        },
+        "zipThisFolder.additionalExcludes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional glob patterns to exclude from the zip archive (e.g. [\"dist\", \"build\", \".venv\"])."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "package": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "package-vsix": "vsce package --no-dependencies",
+    "generate-icon": "node scripts/generate-icon.js",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ignore": "^7.0.14",
+    "yazl": "^3.3.1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^22.13.14",
+    "@types/vscode": "^1.85.0",
+    "@types/yazl": "^3.3.1",
+    "@vscode/vsce": "^4.1.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.2"
+  }
+}

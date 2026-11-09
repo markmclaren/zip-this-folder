@@ -1,0 +1,14 @@
+.vscode/**
+src/**
+scripts/**
+test/**
+test-*/**
+tsconfig.json
+esbuild.js
+PLAN.md
+.gitignore
+.vscodeignore
+*.vsix
+*.zip
+*.bat
+**/*.map
