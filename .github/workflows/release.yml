@@ -51,3 +51,4 @@ jobs:
         run: npx ovsx publish *.vsix -p ${{ secrets.OVSX_PAT }}
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
+

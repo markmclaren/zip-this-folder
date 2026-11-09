@@ -3,7 +3,7 @@
   "displayName": "Zip This Folder",
   "description": "Right-click any folder in the Explorer sidebar to compress it into a zip file.",
   "version": "0.1.0",
-  "publisher": "markmclaren",
+  "publisher": "MarkMcLaren",
   "icon": "icon.png",
   "pricing": "Free",
   "repository": {

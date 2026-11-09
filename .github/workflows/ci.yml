@@ -36,3 +36,4 @@ jobs:
           name: zip-this-folder-vsix
           path: '*.vsix'
           retention-days: 14
+
