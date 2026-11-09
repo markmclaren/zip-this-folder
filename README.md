@@ -1,5 +1,8 @@
 # Zip This Folder
 
+[![CI Build](https://github.com/markmclaren/zip-this-folder/actions/workflows/ci.yml/badge.svg)](https://github.com/markmclaren/zip-this-folder/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 A lightweight extension for **Visual Studio Code** and **Antigravity IDE** that allows you to easily zip any folder directly from the Explorer sidebar context menu.
 
 ## Features
