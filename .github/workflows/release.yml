@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
 
     steps:
       - name: Checkout Code
@@ -40,15 +41,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to VS Code Marketplace
-        if: env.VSCE_PAT != ''
-        run: npx @vscode/vsce publish --packagePath *.vsix -p ${{ secrets.VSCE_PAT }}
+      - name: Publish to VS Code Marketplace (Trusted Publishing)
+        run: npx @vscode/vsce publish --packagePath *.vsix
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
-      - name: Publish to Open VSX Registry
+      - name: Publish to Open VSX Registry (Optional)
         if: env.OVSX_PAT != ''
         run: npx ovsx publish *.vsix -p ${{ secrets.OVSX_PAT }}
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
-
