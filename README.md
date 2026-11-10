@@ -47,8 +47,15 @@ The extension ignores unwanted files and directories using the standard gitignor
 - Node.js (v18+)
 - npm
 
-### One-Click Build (.bat)
-You can double-click or run `build.bat` in the project root to typecheck, bundle, and package the `.vsix` in one step:
+### One-Click Build (`build.sh` / `build.bat`)
+Run `build.sh` (macOS/Linux) or `build.bat` (Windows) in the project root to typecheck, bundle, and package the `.vsix` in one step:
+
+**macOS / Linux:**
+```bash
+./build.sh
+```
+
+**Windows:**
 ```cmd
 build.bat
 ```
